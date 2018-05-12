@@ -1,4 +1,6 @@
 package com.example.android.quakereport;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Caine on 3/31/2018.
@@ -12,7 +14,14 @@ public class Earthquake {
     public Earthquake(String mag, String loc, String date){
         eMag = mag;
         eLoc = loc;
-        eDate = date;
+
+        long timeInMilliseconds = Long.parseLong(date);
+        Date dateObject = new Date(timeInMilliseconds);
+
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+        String dateToDisplay = dateFormatter.format(dateObject);
+
+        eDate = dateToDisplay;
     }
 
     public String getMag() { return eMag;}
